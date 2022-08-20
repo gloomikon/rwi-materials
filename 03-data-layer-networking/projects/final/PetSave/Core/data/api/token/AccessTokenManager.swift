@@ -53,7 +53,7 @@ class AccessTokenManager {
 extension AccessTokenManager: AccessTokenManagerProtocol {
   func isTokenValid() -> Bool {
     update()
-    return accessToken != nil && expiresAt.compare(Date()) == .orderedDescending
+    return accessToken != nil && expiresAt > Date()
   }
 
   func fetchToken() -> String {
