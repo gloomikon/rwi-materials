@@ -42,12 +42,6 @@ struct PersistenceController {
       var animal = Animal.mock[i]
       animal.toManagedObject(context: viewContext)
     }
-    do {
-      try viewContext.save()
-    } catch {
-      let nsError = error as NSError
-      fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-    }
     return result
   }()
 

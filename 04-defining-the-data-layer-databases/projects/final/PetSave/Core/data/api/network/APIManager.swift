@@ -34,7 +34,6 @@ import Foundation
 
 protocol APIManagerProtocol {
   func perform(_ request: RequestProtocol, authToken: String) async throws -> Data
-  func requestToken() async throws -> Data
 }
 
 class APIManager: APIManagerProtocol {
@@ -49,9 +48,5 @@ class APIManager: APIManagerProtocol {
     guard let httpResponse = response as? HTTPURLResponse,
       httpResponse.statusCode == 200 else { throw NetworkError.invalidServerResponse }
     return data
-  }
-
-  func requestToken() async throws -> Data {
-    try await perform(AuthTokenRequest.auth)
   }
 }
